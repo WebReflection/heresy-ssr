@@ -22,5 +22,16 @@
   "dependencies": {
     "basichtml": "^0.23.4",
     "heresy": "^0.12.10"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebReflection/heresy-ssr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WebReflection/heresy-ssr/issues"
+  },
+  "homepage": "https://github.com/WebReflection/heresy-ssr#readme"
 }
