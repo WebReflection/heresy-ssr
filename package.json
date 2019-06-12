@@ -1,0 +1,26 @@
+{
+  "name": "heresy-ssr",
+  "version": "0.0.0",
+  "description": "🔥 heresy 🔥 Server Side Rendering",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run cjs && npm test",
+    "cjs": "ascjs esm cjs",
+    "test": "ascjs test/esm test/cjs && node test/index.js"
+  },
+  "keywords": [
+    "heresy",
+    "SSR",
+    "server",
+    "render"
+  ],
+  "author": "Andrea Giammarchi",
+  "license": "ISC",
+  "devDependencies": {
+    "ascjs": "^3.0.1"
+  },
+  "dependencies": {
+    "basichtml": "^0.23.4",
+    "heresy": "^0.12.10"
+  }
+}
