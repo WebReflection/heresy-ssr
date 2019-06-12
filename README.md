@@ -1,8 +1,7 @@
 # 🔥 heresy 🔥 SSR
-
 Don't simulate the DOM. Be the DOM.
-
 - - -
+<sup>**Social Media Photo by [Thomas Kelley](https://unsplash.com/@thkelley) on [Unsplash](https://unsplash.com/)**</sup>
 
 It's pretty much the same [heresy](https://github.com/WebReflection/heresy#readme), but for the server.
 
