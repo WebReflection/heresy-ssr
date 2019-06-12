@@ -1,6 +1,6 @@
 {
   "name": "heresy-ssr",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "🔥 heresy 🔥 Server Side Rendering",
   "main": "index.js",
   "scripts": {
