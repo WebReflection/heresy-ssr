@@ -1,5 +1,9 @@
 # 🔥 heresy 🔥 Server Side Rendering
 
+Don't simulate the DOM. Be the DOM.
+
+- - -
+
 It's pretty much the same thing, but it runs on the server.
 
 ## Current State
