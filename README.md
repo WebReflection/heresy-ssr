@@ -1,10 +1,10 @@
-# 🔥 heresy 🔥 Server Side Rendering
+# 🔥 heresy 🔥 SSR
 
 Don't simulate the DOM. Be the DOM.
 
 - - -
 
-It's pretty much the same thing, but it runs on the server.
+It's pretty much the same [heresy](https://github.com/WebReflection/heresy#readme), but for the server.
 
 ## Current State
 
