@@ -11,7 +11,7 @@ The project is at its primitive state, so it needs quite some extra test, but th
 
 ### Basic Example
 
-You can ses inside the [test folder](./test) a similar example you can run via `npm run build` or just `npm test`, after the first build.
+You can see inside the [test folder](./test) a similar example you can run via `npm run build` or just `npm test`, after the first build.
 
 ```js
 const {document, render, html} = require('heresy-ssr');
