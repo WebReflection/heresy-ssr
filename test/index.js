@@ -1,8 +1,8 @@
 // for testing purpose to use exact same ESM content
 global.heresy = require('../cjs');
-require('./cjs/definitions.js');
 
 const {document, render, html} = heresy;
+require('./cjs/definitions.js');
 
 const lang = 'en';
 const {hostname} = require('os');
@@ -12,6 +12,8 @@ render(document, html`
   <html lang=${lang}>
     <head>
       <title>🔥 heresy SSR 🔥</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <script defer src="//unpkg.com/heresy"></script>
       <script type="module" src="esm/definitions.js"></script>
     </head>

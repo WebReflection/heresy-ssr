@@ -20,8 +20,8 @@
     "ascjs": "^3.0.1"
   },
   "dependencies": {
-    "basichtml": "^0.23.4",
-    "heresy": "^0.12.10"
+    "basichtml": "^0.24.0",
+    "heresy": "^0.12.12"
   },
   "directories": {
     "test": "test"

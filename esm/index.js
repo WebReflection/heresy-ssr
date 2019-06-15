@@ -9,8 +9,19 @@ import {
   html, svg
 } from 'heresy';
 
+const documents = new WeakMap;
 let waiting = new Map;
 const cleanWait = $ => {
+  const styling = documents.get(document);
+  styling && styling.forEach(value => {
+    if (value.length) {
+      const {head} = document;
+      const style = document.createElement('style');
+      style.setAttribute('type', 'text/css');
+      style.textContent = value;
+      head.insertBefore(style, head.lastChild);
+    }
+  });
   waiting.forEach(({render, args}, node) => {
     render.apply(node, args);
   });
@@ -21,6 +32,17 @@ const cleanWait = $ => {
 const {defineProperty} = Object;
 const define = (...args) => {
   const Class = args.length < 2 ? args[0] : args[1];
+  if ('style' in Class) {
+    const {style} = Class;
+    const styling = documents.get(document) ||
+                    documents.set(document, new Map).get(document);
+    defineProperty(Class, 'style', {
+      value() {
+        styling.set(Class, style.apply(Class, arguments));
+        return '';
+      }
+    });
+  }
   const proto = typeof Class === 'function' ? Class.prototype : Class;
   if ('render' in proto) {
     const {render} = proto;
