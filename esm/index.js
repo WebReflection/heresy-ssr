@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import {init, HTMLElement, HTMLTemplateElement} from 'basichtml';
 const {document} = init({});
 

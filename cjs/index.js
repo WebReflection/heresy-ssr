@@ -1,5 +1,4 @@
-#!/usr/bin/env node
-
+'use strict';
 const {init, HTMLElement, HTMLTemplateElement} = require('basichtml');
 const {document} = init({});
 

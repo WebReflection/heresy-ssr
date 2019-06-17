@@ -2,7 +2,8 @@
   "name": "heresy-ssr",
   "version": "0.2.0",
   "description": "🔥 heresy 🔥 Server Side Rendering",
-  "main": "index.js",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
   "scripts": {
     "build": "npm run cjs && npm test",
     "cjs": "ascjs esm cjs",
