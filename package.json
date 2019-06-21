@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "basichtml": "^0.24.0",
-    "heresy": "^0.12.12"
+    "heresy": "^0.13.0"
   },
   "directories": {
     "test": "test"
