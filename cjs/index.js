@@ -44,6 +44,14 @@ const define = (...args) => {
     });
   }
   const proto = typeof Class === 'function' ? Class.prototype : Class;
+  for (const lifecycle of ['Init', 'Connected', 'Disconnected', 'AttributeChanged']) {
+    const ssr = 'onSSR' + lifecycle;
+    if (ssr in proto)
+      defineProperty(proto, 'on' + lifecycle.toLowerCase(), {
+        configurable: true,
+        value: proto[ssr]
+      });
+  }
   if ('render' in proto) {
     const {render} = proto;
     defineProperty(proto, 'render', {

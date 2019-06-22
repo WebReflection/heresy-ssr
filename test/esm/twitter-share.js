@@ -16,12 +16,14 @@ const TwitterShare = {
     }
   `,
   observedAttributes: ['text', 'url', 'hashtags', 'via', 'related'],
+  onconnected() { this.addEventListener('click', this); },
   onattributechanged(event) {
     this.setAttribute('href', getHref(this));
     this.setAttribute('noreferrer', '');
     this.textContent = 'Tweet this';
   },
   onclick(e) {
+    alert('YAYYYYYY!');
     e.preventDefault();
     const w = 600;
     const h = 400;
@@ -30,13 +32,19 @@ const TwitterShare = {
     const features = `width=${w},height=${h},left=${x},top=${y}`;
     window.open(this.href, '_blank', features);
   },
-  onconnected() {
-    this.addEventListener('click', this);
-    // TODO: requires a special `ssr: {onconnected(){}}` property
-    if (!('href' in this))
-      this.attributes = this.attributes.filter(
-        attr => !TwitterShare.observedAttributes.includes(attr.name)
-      );
+
+  // overwrites client side onconnected, ignored by heresy client
+  // it is possible to fine-tune components on the server side
+  // with onSSR/Init/AttributeChanged/Connected/Disconnected
+  onSSRConnected() {
+    // hard remove observed attributes so that client won't have
+    // onattributechanged ever triggered:
+    //  * faster bootstrap
+    //  * lighter SSR
+    // 🎉
+    this.attributes = this.attributes.filter(
+      attr => !TwitterShare.observedAttributes.includes(attr.name)
+    );
   }
 };
 
