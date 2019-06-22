@@ -1,5 +1,6 @@
 // original implementation here
 // https://svelte.dev/repl/98aa20d4cb3d40dabfef7d8dae183b85?version=3.5.2
+
 const TwitterShare = {
   style: (TS) => `
     ${TS} {
