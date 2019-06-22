@@ -9,6 +9,8 @@ const {
   svg
 } = require('heresy');
 
+const CustomElements = (m => m.__esModule ? /* istanbul ignore next */ m.default : /* istanbul ignore next */ m)(require('./custom-elements.js'));
+
 const documents = new WeakMap;
 let waiting = new Map;
 const cleanWait = $ => {
@@ -84,3 +86,6 @@ exports.define = define;
 exports.render = render;
 exports.html = html;
 exports.svg = svg;
+
+// make <CustomElements> check available with ease
+define('CustomElements', CustomElements);

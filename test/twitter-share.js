@@ -6,13 +6,8 @@ render(document.head, html`
   <title>🔥 heresy SSR 🔥 TwitterShare Example</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-  if(this.customElements)
-    try{customElements.define('built-in',document.createElement('p').constructor,{'extends':'p'})}
-    catch(s){document.write(unescape('%3Cscript%20src%3D%22https%3A//unpkg.com/@ungap/custom-elements-builtin%22%3E%3C/script%3E'))}
-  else
-    document.write(unescape('%3Cscript%20src%3D%22https%3A//unpkg.com/document-register-element%22%3E%3C/script%3E'));
-  </script>
+  <!--👻 remember to include the polyfills if targeting legacy or Safari -->
+  <CustomElements />
   <!--👻 default basic styles can be sent right away through the page -->
   <style>
   body {
@@ -26,10 +21,12 @@ render(document.head, html`
     it's the component definition that matters
   -->
   <script async type="module">
-  import {define} from 'https://unpkg.com/heresy?module';
+  import {define, render, html} from 'https://unpkg.com/heresy?module';
   import TwitterShare from '/esm/twitter-share.js';
   // that's it, rehydration out of the box
   define('TwitterShare', TwitterShare);
+  // for testing purpose
+  window.heresy = {render, html};
   </script>`
 );
 

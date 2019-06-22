@@ -7,6 +7,8 @@ import {
   html, svg
 } from 'heresy';
 
+import CustomElements from './custom-elements.js';
+
 const documents = new WeakMap;
 let waiting = new Map;
 const cleanWait = $ => {
@@ -78,3 +80,6 @@ const render = (where, what) => {
 };
 
 export {document, define, render, html, svg};
+
+// make <CustomElements> check available with ease
+define('CustomElements', CustomElements);
