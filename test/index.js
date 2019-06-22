@@ -12,6 +12,7 @@ render(document, html`
   <html lang=${lang}>
     <head>
       <title>🔥 heresy SSR 🔥</title>
+      <CustomElements/>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <script defer src="//unpkg.com/heresy"></script>

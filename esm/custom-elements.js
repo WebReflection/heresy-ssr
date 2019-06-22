@@ -16,15 +16,15 @@ export default {
     this.textContent = `
       if(this.customElements) {
         try {
-          customElements.define('built-in',document.createElement('p').constructor,{'extends':'p'});
+          customElements.define('built-in',document.createElement('p').constructor,{'extends':'p'})
         }
         catch (s) {
-          document.write(unescape('%3Cscript%20src%3D%22${this.modern}%22%3E%3C/script%3E'));
+          document.write(unescape('%3Cscript%20src%3D%22${this.modern}%22%3E%3C/script%3E'))
         }
       }
       else {
-        document.write(unescape('%3Cscript%20src%3D%22${this.legacy}%22%3E%3C/script%3E'));
+        document.write(unescape('%3Cscript%20src%3D%22${this.legacy}%22%3E%3C/script%3E'))
       }
-    `.trim(/\s+/g, '');
+    `.replace(/\s+/g, '');
   }
 };
