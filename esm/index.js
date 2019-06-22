@@ -9,6 +9,7 @@ import {
 
 import CustomElements from './custom-elements.js';
 
+const configurable = true;
 const documents = new WeakMap;
 let waiting = new Map;
 const cleanWait = $ => {
@@ -37,6 +38,7 @@ const define = (...args) => {
     const styling = documents.get(document) ||
                     documents.set(document, new Map).get(document);
     defineProperty(Class, 'style', {
+      configurable,
       value() {
         styling.set(Class, style.apply(Class, arguments));
         return '';
@@ -48,13 +50,14 @@ const define = (...args) => {
     const ssr = 'onSSR' + lifecycle;
     if (ssr in proto)
       defineProperty(proto, 'on' + lifecycle.toLowerCase(), {
-        configurable: true,
+        configurable,
         value: proto[ssr]
       });
   }
   if ('render' in proto) {
     const {render} = proto;
     defineProperty(proto, 'render', {
+      configurable,
       value() {
         waiting.set(this, {render, args});
         return this;
