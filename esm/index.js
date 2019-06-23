@@ -4,7 +4,7 @@ const {document} = init({});
 import {
   define as heresyDefine,
   render as heresyRender,
-  html, svg
+  ref, html, svg
 } from 'heresy';
 
 import CustomElements from './custom-elements.js';
@@ -82,7 +82,15 @@ const render = (where, what) => {
   }
 };
 
-export {document, define, render, html, svg};
+export {
+  // SSR only, don't use it within components
+  // use this.ownerDocument, if needed
+  document,
+  // specialized for SSR too, not needed within components
+  define, render,
+  // exact same heresy helpers, usable in any component
+  ref, html, svg
+};
 
 // make <CustomElements> check available with ease
 define('CustomElements', CustomElements);
