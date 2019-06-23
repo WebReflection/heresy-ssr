@@ -5,6 +5,7 @@ const {document} = init({});
 const {
   define: heresyDefine,
   render: heresyRender,
+  ref,
   html,
   svg
 } = require('heresy');
@@ -87,6 +88,7 @@ const render = (where, what) => {
 exports.document = document;
 exports.define = define;
 exports.render = render;
+exports.ref = ref;
 exports.html = html;
 exports.svg = svg;
 
