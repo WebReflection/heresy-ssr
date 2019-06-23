@@ -12,7 +12,8 @@ export default {
   get modern() {
     return this.getAttribute('modern') || '//unpkg.com/@ungap/custom-elements-builtin';
   },
-  onconnected() {
+  onSSRConnected() {
+    this.attributes = [];
     this.textContent = `
       if(this.customElements) {
         try {
