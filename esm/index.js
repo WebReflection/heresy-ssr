@@ -1,5 +1,11 @@
-import {init, HTMLElement, HTMLTemplateElement} from 'basichtml';
-const {document} = init({});
+import {
+  init,
+  CustomElementRegistry, Document,
+  HTMLElement, HTMLTemplateElement
+} from 'basichtml';
+const {customElements, document, window} = init({});
+
+import csso from 'csso';
 
 import {
   define as heresyDefine,
@@ -13,11 +19,12 @@ const configurable = true;
 const documents = new WeakMap;
 let waiting = new Map;
 const cleanWait = $ => {
-  const styling = documents.get(document);
+  const doc = window.document || document;
+  const styling = documents.get(doc);
   styling && styling.forEach(value => {
     if (value.length) {
-      const {head} = document;
-      const style = document.createElement('style');
+      const {head} = doc;
+      const style = doc.createElement('style');
       style.setAttribute('type', 'text/css');
       style.textContent = value;
       head.insertBefore(style, head.lastChild);
@@ -34,13 +41,14 @@ const {defineProperty} = Object;
 const define = (...args) => {
   const Class = args.length < 2 ? args[0] : args[1];
   if ('style' in Class) {
+    const doc = window.document || document;
     const {style} = Class;
-    const styling = documents.get(document) ||
-                    documents.set(document, new Map).get(document);
+    const styling = documents.get(doc) ||
+                    documents.set(doc, new Map).get(doc);
     defineProperty(Class, 'style', {
       configurable,
       value() {
-        styling.set(Class, style.apply(Class, arguments));
+        styling.set(Class, csso.minify(style.apply(Class, arguments)).css);
         return '';
       }
     });
@@ -72,10 +80,10 @@ const render = (where, what) => {
   switch (true) {
     case where instanceof HTMLElement:
       return cleanWait(heresyRender(where, what));
-    case where === document:
+    case where instanceof Document:
       heresyRender(template, what);
-      document.documentElement = template.firstElementChild;
-      return cleanWait(document);
+      where.documentElement = template.firstElementChild;
+      return cleanWait(where);
     default:
       heresyRender(template, what);
       return where.write(cleanWait(template).innerHTML);
@@ -83,12 +91,14 @@ const render = (where, what) => {
 };
 
 export {
-  // SSR only, don't use it within components
-  // use this.ownerDocument, if needed
-  document,
+  // SSR only - You can have one document per page/end point
+  CustomElementRegistry, Document,
+  // also for SSR, don't use `document` within components
+  customElements, document, window,
   // specialized for SSR too, not needed within components
   define, render,
-  // exact same heresy helpers, usable in any component
+
+  // Exact same heresy helpers, usable in any client/server component
   ref, html, svg
 };
 
