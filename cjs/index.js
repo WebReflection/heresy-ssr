@@ -99,6 +99,7 @@ exports.CustomElementRegistry = CustomElementRegistry;
 exports.Document = Document;
 exports.customElements = customElements;
 exports.document = document;
+exports.window = window;
 exports.define = define;
 exports.render = render;
 exports.ref = ref;
