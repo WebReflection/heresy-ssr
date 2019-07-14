@@ -9,7 +9,7 @@ It's pretty much the same [heresy](https://github.com/WebReflection/heresy#readm
 ## Extra Features
 
   * dedicated `onSSRInit/AttributeChanged/Connected/Disconnected` methods to override client side `oninit/attributechanged/connected/disconnected`, in order to fine-tune, whenever necessary, the layout and behavior via SSR
-  * an already available `<CustomELement/>` tag to put in the header, whenever pilyfills for legacy or WebKit/Safari are needed. The component accepts `modern` and `legacy` attributes as pointers to polyfills, loaded only after feature detection to leave Chrome, Firefox, and Edge on Chromium free of bloat.
+  * an already available `<CustomELement/>` tag to put in the header, whenever polyfills for legacy or WebKit/Safari are needed. The component accepts `modern` and `legacy` attributes as pointers to polyfills, loaded only after feature detection to leave Chrome, Firefox, and Edge on Chromium free of bloat.
   * components style automatically minified via [csso](https://www.npmjs.com/package/csso)
   * global `customElements` or `document`, swappable on the `window` with any local instance of `Document` or `CustomElementRegistry`
 
