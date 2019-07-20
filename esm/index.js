@@ -56,7 +56,9 @@ const setStyle = Class => {
       }
     });
   }
-  keys(Class.contains || Class.includes || {}).forEach(key => setStyle(Class[key]));
+  const sub = Class.contains || Class.includes;
+  if (sub)
+    keys(sub).forEach(key => setStyle(sub[key]));
 };
 
 const {defineProperty} = Object;
