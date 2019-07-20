@@ -15,6 +15,7 @@ import {
 
 import CustomElements from './custom-elements.js';
 
+const {keys} = Object;
 const configurable = true;
 const documents = new WeakMap;
 const styled = new WeakSet;
@@ -55,7 +56,7 @@ const setStyle = Class => {
       }
     });
   }
-  (Class.contains || Class.includes || []).forEach(setStyle);
+  keys(Class.contains || Class.includes || {}).forEach(key => setStyle(Class[key]));
 };
 
 const {defineProperty} = Object;
