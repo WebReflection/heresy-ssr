@@ -45,12 +45,12 @@ const setStyle = Class => {
   styled.add(Class);
   if ('style' in Class) {
     const {style} = Class;
-    const doc = window.document || document;
-    const styling = documents.get(doc) ||
-                    documents.set(doc, new Map).get(doc);
     defineProperty(Class, 'style', {
       configurable,
       value() {
+        const doc = window.document || document;
+        const styling = documents.get(doc) ||
+                        documents.set(doc, new Map).get(doc);
         styling.set(Class, csso.minify(style.apply(Class, arguments)).css);
         return '';
       }
@@ -89,13 +89,38 @@ const define = (...args) => {
 
 const template = new HTMLTemplateElement;
 const render = (where, what) => {
+  const {document} = window;
+  let result;
   switch (true) {
     case where instanceof HTMLElement:
-      return cleanWait(heresyRender(where, what));
+      window.document = where.ownerDocument;
+      try {
+        result = cleanWait(heresyRender(where, what));
+      }
+      catch(error) {
+        console.error(error);
+      }
+      finally {
+        window.document = document;
+      }
+      return result;
     case where instanceof Document:
-      heresyRender(template, what);
-      where.documentElement = template.firstElementChild;
-      return cleanWait(where);
+      window.document = where;
+      try {
+        heresyRender(template, what);
+        where.documentElement = template.firstElementChild;
+        result = cleanWait(where);
+      }
+      catch(error) {
+        console.error(error);
+      }
+      finally {
+        window.document = document;
+      }
+      return result;
+    // RAW fallback, through response.write(...)
+    // render(response, html`anything`)
+    // TODO: documentation + way to pass a different document
     default:
       heresyRender(template, what);
       return where.write(cleanWait(template).innerHTML);

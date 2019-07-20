@@ -43,6 +43,21 @@ render(document, html`
 
 You can also try `node test/twitter-share.js` to see an example of a component served through the same definition crystal clean via SSR, but still re-hydrated on the client whenever the definition lands on the page.
 
+## Multiple Documents
+
+The default `document` is ideal for **S**ingle **P**age **A**pplications but not optimal for sites distributed through various pages.
+
+In latter scenario, you can use a new document per each render.
+
+```js
+const {Document, render, html} = require('heresy-ssr');
+
+// create a new document related to this page only
+const document = new Document;
+
+render(document, html`<h1>Hello</h1>`);
+```
+
 
 ## Project Goals
 
