@@ -22,6 +22,7 @@ const CustomElements = (m => m.__esModule ? /* istanbul ignore next */ m.default
 
 const configurable = true;
 const documents = new WeakMap;
+const styled = new WeakSet;
 let waiting = new Map;
 const cleanWait = $ => {
   const doc = window.document || document;
@@ -42,12 +43,13 @@ const cleanWait = $ => {
   return $;
 };
 
-const {defineProperty} = Object;
-const define = (...args) => {
-  const Class = args.length < 2 ? args[0] : args[1];
+const setStyle = Class => {
+  if (styled.has(Class))
+    return;
+  styled.add(Class);
   if ('style' in Class) {
-    const doc = window.document || document;
     const {style} = Class;
+    const doc = window.document || document;
     const styling = documents.get(doc) ||
                     documents.set(doc, new Map).get(doc);
     defineProperty(Class, 'style', {
@@ -58,6 +60,13 @@ const define = (...args) => {
       }
     });
   }
+  (Class.contains || Class.includes || []).forEach(setStyle);
+};
+
+const {defineProperty} = Object;
+const define = (...args) => {
+  const Class = args.length < 2 ? args[0] : args[1];
+  setStyle(Class);
   const proto = typeof Class === 'function' ? Class.prototype : Class;
   for (const lifecycle of ['Init', 'Connected', 'Disconnected', 'AttributeChanged']) {
     const ssr = 'onSSR' + lifecycle;
