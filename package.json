@@ -21,9 +21,9 @@
     "ascjs": "^3.0.1"
   },
   "dependencies": {
-    "basichtml": "^1.0.0",
+    "basichtml": "^1.1.1",
     "csso": "^3.5.1",
-    "heresy": "^0.13.2"
+    "heresy": "^0.13.3"
   },
   "directories": {
     "test": "test"
