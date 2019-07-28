@@ -3,6 +3,8 @@ Don't simulate the DOM. Be the DOM.
 - - -
 <sup>**Social Media Photo by [Thomas Kelley](https://unsplash.com/@thkelley) on [Unsplash](https://unsplash.com/)**</sup>
 
+![WebReflection status](https://offline.report/status/webreflection.svg) [![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](https://opensource.org/licenses/ISC) [![Build Status](https://travis-ci.com/WebReflection/heresy-ssr.svg?branch=master)](https://travis-ci.com/WebReflection/heresy-ssr) [![Greenkeeper badge](https://badges.greenkeeper.io/WebReflection/heresy-ssr.svg)](https://greenkeeper.io/)
+
 It's pretty much the same [heresy](https://github.com/WebReflection/heresy#readme), but for the server, and with extra features.
 
 
