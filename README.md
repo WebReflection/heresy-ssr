@@ -1,4 +1,7 @@
 # 🔥 heresy 🔥 SSR
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/WebReflection/heresy-ssr.svg)](https://greenkeeper.io/)
+
 Don't simulate the DOM. Be the DOM.
 - - -
 <sup>**Social Media Photo by [Thomas Kelley](https://unsplash.com/@thkelley) on [Unsplash](https://unsplash.com/)**</sup>
