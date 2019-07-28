@@ -7,7 +7,7 @@
   "scripts": {
     "build": "npm run cjs",
     "cjs": "ascjs esm cjs",
-    "test": "ascjs test/esm test/cjs && node test/index.js"
+    "test": "ascjs test/esm test/cjs"
   },
   "keywords": [
     "heresy",
