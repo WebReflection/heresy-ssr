@@ -1,4 +1,7 @@
 node_modules/
 test/
 package-lock.json
-
+.travis.yml
+.github/
+heresy.png
+heresy.svg
