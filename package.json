@@ -22,8 +22,8 @@
   },
   "dependencies": {
     "basichtml": "^1.1.1",
-    "csso": "^3.5.1",
-    "heresy": "^0.16.1"
+    "csso": "^4.0.0",
+    "heresy": "^0.16.2"
   },
   "directories": {
     "test": "test"
