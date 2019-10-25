@@ -1,5 +1,5 @@
 const {document, define, render, html} = require('../cjs');
-const {default: TwitterShare} = require('./cjs/twitter-share');
+const TwitterShare = require('./cjs/twitter-share');
 
 // generic document head setup
 render(document.head, html`

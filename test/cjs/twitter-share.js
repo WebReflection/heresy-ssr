@@ -49,7 +49,7 @@ const TwitterShare = {
   }
 };
 
-Object.defineProperty(exports, '__esModule', {value: true}).default = TwitterShare;
+module.exports = TwitterShare;
 
 function getHref(self) {
   return 'https://twitter.com/intent/tweet?' +

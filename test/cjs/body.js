@@ -1,5 +1,5 @@
 'use strict';
-Object.defineProperty(exports, '__esModule', {value: true}).default = {
+module.exports = {
   extends: 'body',
   style: (selector) => `
     ${selector} {

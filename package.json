@@ -6,8 +6,8 @@
   "module": "esm/index.js",
   "scripts": {
     "build": "npm run cjs",
-    "cjs": "ascjs esm cjs",
-    "test": "npm run build && ascjs test/esm test/cjs"
+    "cjs": "ascjs --no-default esm cjs",
+    "test": "npm run build && ascjs --no-default test/esm test/cjs"
   },
   "keywords": [
     "heresy",
@@ -18,11 +18,11 @@
   "author": "Andrea Giammarchi",
   "license": "ISC",
   "devDependencies": {
-    "ascjs": "^3.0.1"
+    "ascjs": "^3.1.0"
   },
   "dependencies": {
     "basichtml": "^1.1.1",
-    "csso": "^4.0.0",
+    "csso": "^4.0.1",
     "heresy": "^0.16.2"
   },
   "directories": {
