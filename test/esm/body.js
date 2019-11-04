@@ -1,5 +1,15 @@
+const Fragment = {
+  extends: 'fragment',
+  mappedAttributes: ['hostname'],
+  render() {
+    this.html`Welcome in <strong>${this.hostname}</strong>!`;
+    console.log(this.outerHTML);
+  }
+};
+
 export default {
   extends: 'body',
+  includes: {Fragment},
   style: (selector) => `
     ${selector} {
       font-family: sans-serif;
@@ -10,7 +20,7 @@ export default {
     }
   `,
   render() {
-    this.html`Welcome in <strong>${this.dataset.hostname}</strong>!`;
+    this.html`<Fragment .hostname=${this.dataset.hostname}/>`;
     console.log(this.outerHTML);
   }
 };
