@@ -1,6 +1,6 @@
 {
   "name": "heresy-ssr",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "description": "🔥 heresy 🔥 Server Side Rendering",
   "main": "cjs/index.js",
   "module": "esm/index.js",
