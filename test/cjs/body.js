@@ -1,6 +1,15 @@
 'use strict';
+const Fragment = {
+  extends: 'fragment',
+  mappedAttributes: ['hostname'],
+  render() {
+    this.html`Welcome in <strong>${this.hostname}</strong>!`;
+  }
+};
+
 module.exports = {
   extends: 'body',
+  includes: {Fragment},
   style: (selector) => `
     ${selector} {
       font-family: sans-serif;
@@ -11,7 +20,7 @@ module.exports = {
     }
   `,
   render() {
-    this.html`Welcome in <strong>${this.dataset.hostname}</strong>!`;
+    this.html`<Fragment .hostname=${this.dataset.hostname}/>`;
     console.log(this.outerHTML);
   }
 };

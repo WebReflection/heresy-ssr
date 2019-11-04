@@ -3,7 +3,6 @@ const Fragment = {
   mappedAttributes: ['hostname'],
   render() {
     this.html`Welcome in <strong>${this.hostname}</strong>!`;
-    console.log(this.outerHTML);
   }
 };
 
