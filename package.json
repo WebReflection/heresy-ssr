@@ -23,7 +23,7 @@
   "dependencies": {
     "basichtml": "^1.1.2",
     "csso": "^4.0.2",
-    "heresy": "^0.18.4"
+    "heresy": "^0.22.1"
   },
   "directories": {
     "test": "test"
