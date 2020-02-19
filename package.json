@@ -1,6 +1,6 @@
 {
   "name": "heresy-ssr",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "🔥 heresy 🔥 Server Side Rendering",
   "main": "cjs/index.js",
   "module": "esm/index.js",
@@ -18,12 +18,12 @@
   "author": "Andrea Giammarchi",
   "license": "ISC",
   "devDependencies": {
-    "ascjs": "^3.1.0"
+    "ascjs": "^3.1.2"
   },
   "dependencies": {
     "basichtml": "^1.1.2",
     "csso": "^4.0.2",
-    "heresy": "^0.23.2"
+    "heresy": "^0.24.4"
   },
   "directories": {
     "test": "test"
