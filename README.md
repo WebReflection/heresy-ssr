@@ -7,6 +7,21 @@ Don't simulate the DOM. Be the DOM.
 
 It's pretty much the same [heresy](https://github.com/WebReflection/heresy#readme), but for the server, and with extra features.
 
+### How To Install Without Canvas
+
+If you don't need/want to use the `<canvas>` element, which is an optional dependency of [basicHTML](https://github.com/WebReflection/basicHTML#readme), you can use:
+
+```sh
+# install heresy-ssr without canvas
+npm i --no-optional heresy-ssr
+```
+
+If you'd like to use the `<canvas>` element too, simply:
+
+```sh
+# install heresy-ssr with canvas
+npm i heresy-ssr
+```
 
 ## Extra Features
 
