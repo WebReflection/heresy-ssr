@@ -21,7 +21,7 @@
     "ascjs": "^3.1.2"
   },
   "dependencies": {
-    "basichtml": "^1.1.2",
+    "basichtml": "^2.0.2",
     "csso": "^4.0.2",
     "heresy": "^0.24.4"
   },
