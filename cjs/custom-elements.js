@@ -8,7 +8,7 @@
 module.exports = {
   extends: 'script',
   get legacy() {
-    return this.getAttribute('modern') || '//unpkg.com/document-register-element';
+    return this.getAttribute('legacy') || '//unpkg.com/document-register-element';
   },
   get modern() {
     return this.getAttribute('modern') || '//unpkg.com/@ungap/custom-elements-builtin';
