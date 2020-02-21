@@ -1,6 +1,6 @@
 import {
   init,
-  CustomElementRegistry, Document,
+  Document as PlainDocument,
   HTMLElement, HTMLTemplateElement
 } from 'basichtml';
 const {customElements, document, window} = init({});
@@ -104,7 +104,7 @@ const render = (where, what) => {
         window.document = document;
       }
       return result;
-    case where instanceof Document:
+    case where instanceof PlainDocument:
       window.document = where;
       try {
         heresyRender(template, what);
@@ -127,9 +127,11 @@ const render = (where, what) => {
   }
 };
 
+Document.prototype = PlainDocument.prototype;
+
 export {
   // SSR only - You can have one document per page/end point
-  CustomElementRegistry, Document,
+  Document,
   // also for SSR, don't use `document` within components
   customElements, document, window,
   // specialized for SSR too, not needed within components
@@ -141,3 +143,7 @@ export {
 
 // make <CustomElements> check available with ease
 define('CustomElements', CustomElements);
+
+function Document() {
+  return new PlainDocument(customElements);
+}

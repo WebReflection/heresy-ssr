@@ -1,8 +1,7 @@
 'use strict';
 const {
   init,
-  CustomElementRegistry,
-  Document,
+  Document: PlainDocument,
   HTMLElement,
   HTMLTemplateElement
 } = require('basichtml');
@@ -109,7 +108,7 @@ const render = (where, what) => {
         window.document = document;
       }
       return result;
-    case where instanceof Document:
+    case where instanceof PlainDocument:
       window.document = where;
       try {
         heresyRender(template, what);
@@ -132,7 +131,8 @@ const render = (where, what) => {
   }
 };
 
-exports.CustomElementRegistry = CustomElementRegistry;
+Document.prototype = PlainDocument.prototype;
+
 exports.Document = Document;
 exports.customElements = customElements;
 exports.document = document;
@@ -145,3 +145,7 @@ exports.svg = svg;
 
 // make <CustomElements> check available with ease
 define('CustomElements', CustomElements);
+
+function Document() {
+  return new PlainDocument(customElements);
+}
