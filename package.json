@@ -1,13 +1,13 @@
 {
   "name": "heresy-ssr",
-  "version": "0.6.0",
+  "version": "1.0.1",
   "description": "🔥 heresy 🔥 Server Side Rendering",
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "scripts": {
     "build": "npm run cjs",
-    "cjs": "ascjs esm cjs",
-    "test": "ascjs test/esm test/cjs && node test/index.js"
+    "cjs": "ascjs --no-default esm cjs",
+    "test": "npm run build && ascjs --no-default test/esm test/cjs"
   },
   "keywords": [
     "heresy",
@@ -18,12 +18,12 @@
   "author": "Andrea Giammarchi",
   "license": "ISC",
   "devDependencies": {
-    "ascjs": "^3.0.1"
+    "ascjs": "^3.1.2"
   },
   "dependencies": {
-    "basichtml": "^1.1.1",
-    "csso": "^3.5.1",
-    "heresy": "^0.14.1"
+    "basichtml": "^2.0.2",
+    "csso": "^4.0.2",
+    "heresy": "^0.25.0"
   },
   "directories": {
     "test": "test"

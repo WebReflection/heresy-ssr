@@ -1,13 +1,29 @@
-# 🔥 heresy 🔥 SSR
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/WebReflection/heresy-ssr.svg)](https://greenkeeper.io/)
+# ![heresy logo](heresy.png) heresy SSR
 
 Don't simulate the DOM. Be the DOM.
 - - -
 <sup>**Social Media Photo by [Thomas Kelley](https://unsplash.com/@thkelley) on [Unsplash](https://unsplash.com/)**</sup>
 
+![WebReflection status](https://offline.report/status/webreflection.svg) [![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](https://opensource.org/licenses/ISC) [![Build Status](https://travis-ci.com/WebReflection/heresy-ssr.svg?branch=master)](https://travis-ci.com/WebReflection/heresy-ssr) [![Greenkeeper badge](https://badges.greenkeeper.io/WebReflection/heresy-ssr.svg)](https://greenkeeper.io/)
+
 It's pretty much the same [heresy](https://github.com/WebReflection/heresy#readme), but for the server, and with extra features.
 
+
+### How To Install With Canvas
+
+If you need/want to use the `<canvas>` element, which is a dev dependency of [basicHTML](https://github.com/WebReflection/basicHTML#readme), you explicitly need to type:
+
+```sh
+# install heresy-ssr with canvas
+npm i heresy-ssr canvas
+```
+
+Otherwise _heresy-ssr_ will ship without canvas via simply typing:
+
+```sh
+# install heresy-ssr without canvas
+npm i heresy-ssr
+```
 
 ## Extra Features
 
@@ -46,6 +62,7 @@ render(document, html`
 
 You can also try `node test/twitter-share.js` to see an example of a component served through the same definition crystal clean via SSR, but still re-hydrated on the client whenever the definition lands on the page.
 
+
 ## Multiple Documents
 
 The default `document` is ideal for **S**ingle **P**age **A**pplications but not optimal for sites distributed through various pages.
@@ -69,10 +86,11 @@ render(document, html`<h1>Hello</h1>`);
   * Custom Elements and built-in extends out of the box for any sort of client/server need
   * you work on the server with same DOM primitives you know on the client, but you can also create as many documents you want, so that each page is reflected by a different, always clean document
 
+
 ### Differences from viperHTML
 
-There are tons of differences with viperHTML at this stage:
+There are tons of differences with _viperHTML_ at this stage:
 
   * the template literal parser is exactly the same one used on the client (slower cold bootstrap, but damn fast hot renders)
   * the code is exactly the same one used by the client library, with minor tweaks specific for SSR usage only
-  * viperHTML never really provided proper re-hydration for hyperHTML, while here this is provided natively by the Web platform, and it works better than anything else, specially with custom elements builtin
+  * _viperHTML_ never really provided proper re-hydration for _hyperHTML_, while here this is provided natively by the Web platform, and it works better than anything else, specially with custom elements builtin

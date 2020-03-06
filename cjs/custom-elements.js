@@ -5,10 +5,10 @@
     legacy="//unpkg.com/document-register-element"
   />
 */
-Object.defineProperty(exports, '__esModule', {value: true}).default = {
+module.exports = {
   extends: 'script',
   get legacy() {
-    return this.getAttribute('modern') || '//unpkg.com/document-register-element';
+    return this.getAttribute('legacy') || '//unpkg.com/document-register-element';
   },
   get modern() {
     return this.getAttribute('modern') || '//unpkg.com/@ungap/custom-elements-builtin';
@@ -16,17 +16,20 @@ Object.defineProperty(exports, '__esModule', {value: true}).default = {
   onSSRConnected() {
     this.attributes = [];
     this.textContent = `
-      if(this.customElements) {
-        try {
-          customElements.define('built-in',document.createElement('p').constructor,{'extends':'p'})
-        }
-        catch (s) {
-          document.write(unescape('%3Cscript%20src%3D%22${this.modern}%22%3E%3C/script%3E'))
-        }
+    (function(w, d, c){
+      try {
+        w[c].define('built-in', d.createElement('p').constructor, {'extends':'p'})
       }
-      else {
-        document.write(unescape('%3Cscript%20src%3D%22${this.legacy}%22%3E%3C/script%3E'))
+      catch (e) {
+        d.write(
+          unescape(
+            '%3Cscript%20src%3D%22' +
+            (w[c] ? '${this.modern}' : '${this.legacy}') +
+            '%22%3E%3C/script%3E'
+          )
+        )
       }
+    }(this, document, 'customElements'))
     `.replace(/\s+/g, '');
   }
 };

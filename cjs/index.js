@@ -1,8 +1,7 @@
 'use strict';
 const {
   init,
-  CustomElementRegistry,
-  Document,
+  Document: PlainDocument,
   HTMLElement,
   HTMLTemplateElement
 } = require('basichtml');
@@ -23,17 +22,17 @@ const CustomElements = (m => m.__esModule ? /* istanbul ignore next */ m.default
 const {keys} = Object;
 const configurable = true;
 const documents = new WeakMap;
-const styled = new WeakSet;
+const classStyle = new Map;
 let waiting = new Map;
 const cleanWait = $ => {
-  const doc = window.document || document;
-  const styling = documents.get(doc);
-  styling && styling.forEach(value => {
-    if (value.length) {
+  const styles = documents.get(doc) || documents.set(doc, new Set).get(doc);
+  classStyle.forEach((css, Class) => {
+    if (css.length && !styles.has(Class)) {
+      styles.add(Class);
       const {head} = doc;
       const style = doc.createElement('style');
       style.setAttribute('type', 'text/css');
-      style.textContent = value;
+      style.textContent = css;
       head.insertBefore(style, head.lastChild);
     }
   });
@@ -44,7 +43,7 @@ const cleanWait = $ => {
   return $;
 };
 
-const setStyle = Class => {
+const setStyle = (Class, styled = new Set) => {
   if (styled.has(Class))
     return;
   styled.add(Class);
@@ -53,17 +52,15 @@ const setStyle = Class => {
     defineProperty(Class, 'style', {
       configurable,
       value() {
-        const doc = window.document || document;
-        const styling = documents.get(doc) ||
-                        documents.set(doc, new Map).get(doc);
-        styling.set(Class, csso.minify(style.apply(Class, arguments)).css);
+        if (!classStyle.has(Class))
+          classStyle.set(Class, csso.minify(style.apply(Class, arguments)).css);
         return '';
       }
     });
   }
   const sub = Class.contains || Class.includes;
   if (sub)
-    keys(sub).forEach(key => setStyle(sub[key]));
+    keys(sub).forEach(key => setStyle(sub[key]), styled);
 };
 
 const {defineProperty} = Object;
@@ -109,7 +106,7 @@ const render = (where, what) => {
         window.document = document;
       }
       return result;
-    case where instanceof Document:
+    case where instanceof PlainDocument:
       window.document = where;
       try {
         heresyRender(template, what);
@@ -132,7 +129,8 @@ const render = (where, what) => {
   }
 };
 
-exports.CustomElementRegistry = CustomElementRegistry;
+Document.prototype = PlainDocument.prototype;
+
 exports.Document = Document;
 exports.customElements = customElements;
 exports.document = document;
@@ -145,3 +143,7 @@ exports.svg = svg;
 
 // make <CustomElements> check available with ease
 define('CustomElements', CustomElements);
+
+function Document() {
+  return new PlainDocument(customElements);
+}
