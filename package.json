@@ -18,12 +18,12 @@
   "author": "Andrea Giammarchi",
   "license": "ISC",
   "devDependencies": {
-    "ascjs": "^3.1.2"
+    "ascjs": "^4.0.0"
   },
   "dependencies": {
-    "basichtml": "^2.2.1",
+    "basichtml": "^2.2.6",
     "csso": "^4.0.3",
-    "heresy": "^0.27.0"
+    "heresy": "^0.28.0"
   },
   "directories": {
     "test": "test"
