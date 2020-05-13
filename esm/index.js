@@ -21,6 +21,7 @@ const documents = new WeakMap;
 const classStyle = new Map;
 let waiting = new Map;
 const cleanWait = $ => {
+  const doc = window.document;
   const styles = documents.get(doc) || documents.set(doc, new Set).get(doc);
   classStyle.forEach((css, Class) => {
     if (css.length && !styles.has(Class)) {
