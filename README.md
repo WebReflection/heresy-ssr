@@ -7,6 +7,14 @@ Don't simulate the DOM. Be the DOM.
 
 It's pretty much the same [heresy](https://github.com/WebReflection/heresy#readme), but for the server, and with extra features.
 
+- - -
+
+### V2 Breaking Changes
+
+Please be sure you understand the [breaking changes landed in lighterhtml](https://github.com/WebReflection/lighterhtml#v4-breaking-changes).
+
+- - -
+
 
 ### How To Install With Canvas
 
