@@ -9,6 +9,12 @@ It's pretty much the same [heresy](https://github.com/WebReflection/heresy#readm
 
 - - -
 
+### 📣 Community Announcement
+
+Please ask questions in the [dedicated forum](https://webreflection.boards.net/) to help the community around this project grow ♥
+
+---
+
 ### V2 Breaking Changes
 
 Please be sure you understand the [breaking changes landed in lighterhtml](https://github.com/WebReflection/lighterhtml#v4-breaking-changes).
