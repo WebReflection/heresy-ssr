@@ -11,7 +11,7 @@ It's pretty much the same [heresy](https://github.com/WebReflection/heresy#readm
 
 ### 📣 Community Announcement
 
-Please ask questions in the [dedicated forum](https://webreflection.boards.net/) to help the community around this project grow ♥
+Please ask questions in the [dedicated discussions repository](https://github.com/WebReflection/discussions), to help the community around this project grow ♥
 
 ---
 
