@@ -1,4 +1,5 @@
 # ![heresy logo](heresy.png) heresy SSR
+
 Don't simulate the DOM. Be the DOM.
 - - -
 <sup>**Social Media Photo by [Thomas Kelley](https://unsplash.com/@thkelley) on [Unsplash](https://unsplash.com/)**</sup>
