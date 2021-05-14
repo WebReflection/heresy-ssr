@@ -1,31 +1,39 @@
-// for testing purpose to use exact same ESM content
-global.heresy = require('../cjs');
-
-const {document, render, html} = heresy;
-require('./cjs/definitions.js');
+import { hostname } from 'os';
+import { readFileSync } from 'fs';
+import { createServer } from 'http';
+import heresy from '../cjs/index.js';
+global.heresy = heresy;
+const { document, render, html } = heresy;
+import './esm/definitions.js';
 
 const lang = 'en';
-const {hostname} = require('os');
-const {readFileSync} = require('fs');
+render(
+  document,
+  html`
+    <html lang=${lang}>
+      <head>
+        <title>🔥 heresy SSR 🔥</title>
+        <CustomElements />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script defer src="//unpkg.com/heresy"></script>
+        <script type="module" src="esm/definitions.js"></script>
+      </head>
+      <body data-hostname=${hostname} />
+      <Todo />
+      <TwitterShare
+        text="A Twitter share button with progressive enhancement"
+        url="https://github.com/WebReflection/heresy#readme"
+        via="webreflection"
+      />
+    </html>
+  `
+);
 
-render(document, html`
-  <html lang=${lang}>
-    <head>
-      <title>🔥 heresy SSR 🔥</title>
-      <CustomElements/>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <script defer src="//unpkg.com/heresy"></script>
-      <script type="module" src="esm/definitions.js"></script>
-    </head>
-    <Body data-hostname=${hostname}/>
-  </html>
-`);
-
-require('http').createServer((req, res) => {
+createServer((req, res) => {
   switch (true) {
     case /^\/esm\/.+$/.test(req.url):
-      res.writeHead(200, {"content-type": "application/javascript"});
+      res.writeHead(200, { 'content-type': 'application/javascript' });
       res.end(readFileSync(`./test${req.url}`));
       break;
     case req.url === '/favicon.ico':
@@ -33,7 +41,7 @@ require('http').createServer((req, res) => {
       res.end();
       break;
     default:
-      res.writeHead(200, {"content-type": "text/html;charset=utf-8"});
+      res.writeHead(200, { 'content-type': 'text/html;charset=utf-8' });
       res.end(document.toString());
       break;
   }

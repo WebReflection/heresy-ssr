@@ -4,6 +4,7 @@
   "description": "🔥 heresy 🔥 Server Side Rendering",
   "main": "cjs/index.js",
   "module": "esm/index.js",
+  "type": "module",
   "scripts": {
     "build": "npm run cjs",
     "cjs": "ascjs --no-default esm cjs",
